@@ -10,11 +10,11 @@ type List struct {
 func NewList() (l *List) {
 	newList := &List{}
 	return newList
-} // Создаётся новый список и возвращает указатель
+} // Создаётся новый список
 
 func (l *List) Len() (len int64) {
 	return l.len
-} // Возращает длину списка, которая хранится в поле len структуры List
+} // Возращает длину списка. Она хранится в len
 
 func (l *List) Add(value int64) (id int64) {
 	newNode := &node{
@@ -34,7 +34,7 @@ func (l *List) Add(value int64) (id int64) {
 
 	l.len++
 	return l.len - 1
-} // Добавляет элемент в список и возвращает его индекс
+} // добавляет элемент в список и возвращает его индекс
 
 func (l *List) RemoveByIndex(id int64) {
 	if id < 0 || id >= l.len {
@@ -52,7 +52,7 @@ func (l *List) RemoveByIndex(id int64) {
 	}
 
 	l.len--
-} // Удаляет элемент из списка по индексу
+} // удаляет элемент из списка по индексу
 
 func (l *List) RemoveByValue(value int64) {
 	if l.len == 0 {
@@ -76,7 +76,7 @@ func (l *List) RemoveByValue(value int64) {
 
 	current.next = current.next.next
 	l.len--
-} // Удаление элемента из списка по значению
+} // удаление элемента из списка по значению
 
 func (l *List) RemoveAllByValue(value int64) {
 	if l.len == 0 {
@@ -97,7 +97,7 @@ func (l *List) RemoveAllByValue(value int64) {
 			current = current.next
 		}
 	}
-} // Удаляет все элементы из списка по значению
+} // удаляет все элементы из списка по значению
 
 func (l *List) GetByIndex(id int64) (value int64, ok bool) {
 	if id < 0 || id >= l.len {
@@ -110,7 +110,7 @@ func (l *List) GetByIndex(id int64) (value int64, ok bool) {
 	}
 
 	return current.value, true
-} // Возвращает значение элемента по индексу.
+} // уозвращает значение элемента по индексу.
 
 func (l *List) GetByValue(value int64) (id int64, ok bool) {
 	current := l.firstNode
@@ -125,7 +125,7 @@ func (l *List) GetByValue(value int64) (id int64, ok bool) {
 	}
 
 	return 0, false
-} // Возвращает индекс первого найденного элемента по значению.
+} // возвращает индекс первого найденного элемента по значению.
 
 func (l *List) GetAllByValue(value int64) (ids []int64, ok bool) {
 	current := l.firstNode
@@ -142,7 +142,7 @@ func (l *List) GetAllByValue(value int64) (ids []int64, ok bool) {
 	}
 
 	return nil, false
-} // Возвращает индексы всех найденных элементов по значению
+} // возвращает индексы всех найденных элементов по значению
 
 func (l *List) GetAll() (values []int64, ok bool) {
 	if l.len == 0 {
@@ -160,12 +160,12 @@ func (l *List) GetAll() (values []int64, ok bool) {
 	}
 
 	return values, true
-} // Возвращает все элементы списка
+} // возвращает все элементы списка
 
 func (l *List) Clear() {
 	l.firstNode = nil
 	l.len = 0
-} // Очищает список
+} // очищает список
 
 func (l *List) Print() {
 	current := l.firstNode
@@ -184,4 +184,4 @@ func (l *List) Print() {
 	}
 
 	fmt.Println()
-} // Выводит список в консоль
+} // выводит список в консоль
